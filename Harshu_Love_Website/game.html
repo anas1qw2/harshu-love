@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Catch the Panda 🐼💘</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #ffd6e8, #ffe6f2);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      color: #c2185b;
+      font-size: 2em;
+    }
+    .panda {
+      position: absolute;
+      width: 80px;
+      font-size: 60px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+    #caught {
+      text-align: center;
+      font-size: 1.4em;
+      color: #c2185b;
+      margin-top: 20px;
+    }
+    #mood {
+      text-align: center;
+      font-size: 1.2em;
+      margin-top: 10px;
+      color: #555;
+    }
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #ffe6f0;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #ff99cc;
+      z-index: 999;
+      text-align: center;
+      display: none;
+    }
+    .popup button {
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    .popup button:hover {
+      background-color: #e75480;
+    }
+  </style>
+</head>
+<body>
+  <header>Catch the Panda if You Love Me! 🐼💕</header>
+  <main style="text-align:center">
+    <div class="panda" id="panda">🐼</div>
+    <p id="caught" style="display:none;">Yay! You caught the panda! You love meee 😚💖</p>
+    <p id="mood"></p>
+  </main>
+
+  <div class="popup" id="popup">
+    <p style="font-size:1.2em;">Wait... if you really love me… will you send me your cute photo? 🥺📸</p>
+    <button onclick="acceptPhoto()">Yes</button>
+    <button onclick="declinePhoto()">Maybe later</button>
+  </div>
+
+  <script>
+    const panda = document.getElementById('panda');
+    const caught = document.getElementById('caught');
+    const mood = document.getElementById('mood');
+    const popup = document.getElementById('popup');
+
+    let missCount = 0;
+    let isCaught = false;
+    let isFrozen = false;
+
+    function movePanda() {
+      if (isCaught || isFrozen) return;
+      panda.style.top = Math.random() * 80 + 'vh';
+      panda.style.left = Math.random() * 80 + 'vw';
+    }
+
+    panda.onclick = () => {
+      if (isFrozen || isCaught) {
+        isCaught = true;
+        panda.textContent = '🥰';
+        caught.style.display = 'block';
+        mood.textContent = "You did it! I'm all yours 💘";
+        panda.style.cursor = 'default';
+      }
+    };
+
+    panda.onmouseover = () => {
+      if (isCaught || isFrozen) return;
+      missCount++;
+
+      if (missCount === 4) {
+        popup.style.display = 'block';
+        return;
+      }
+
+      if (missCount === 5) {
+        panda.textContent = '🥺';
+        mood.textContent = "Catch me, please 🥺";
+      } else if (missCount === 8) {
+        panda.textContent = '😔';
+        mood.textContent = "I'm losing hope... don’t you love me?";
+      } else {
+        mood.textContent = '';
+      }
+
+      movePanda();
+    };
+
+    function acceptPhoto() {
+      isFrozen = true;
+      popup.style.display = 'none';
+      mood.textContent = "I believe you now... come catch me 😚";
+    }
+
+    function declinePhoto() {
+      popup.style.display = 'none';
+      mood.textContent = "Okay... but I’m shy now 😔";
+    }
+
+    // Initial spawn
+    movePanda();
+  </script>
+</body>
+</html>
