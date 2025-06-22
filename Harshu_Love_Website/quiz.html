@@ -1,28 +1,145 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Love Quiz 💌</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Flirty Quiz 💖</title>
+  <style>
+    body {
+      background: linear-gradient(120deg, #ffd6f5, #ffe6f0);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      flex-direction: column;
+    }
+    h1 {
+      color: #d63384;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .question {
+      background: #fff0f8;
+      border-radius: 15px;
+      padding: 25px;
+      margin: 15px 0;
+      box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+      width: 90%;
+      max-width: 500px;
+      transition: 0.3s;
+    }
+    .question:hover {
+      transform: scale(1.02);
+    }
+    .question h3 {
+      margin-bottom: 15px;
+      color: #c2185b;
+    }
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 5px 0;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ffb6c1;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .options button:hover {
+      background-color: #ff69b4;
+    }
+    #submit {
+      margin-top: 30px;
+      padding: 12px 30px;
+      border: none;
+      background-color: #e60073;
+      color: white;
+      font-size: 1.1em;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    #submit:hover {
+      background-color: #c2185b;
+    }
+    .result {
+      display: none;
+      text-align: center;
+      margin-top: 25px;
+      color: #c2185b;
+      font-size: 1.2em;
+    }
+  </style>
 </head>
 <body>
-    <div class="hearts"></div>
-    <section class="quiz-section">
-        <h2>How Well Do You Know Us?</h2>
-        <form id="loveQuiz">
-            <label>1. What’s my favorite nickname for you?</label><input type="text"><br>
-            <label>2. What color reminds you of us?</label><input type="text"><br>
-            <label>3. Our dream destination together?</label><input type="text"><br>
-            <label>4. What’s our favorite thing to do?</label><input type="text"><br>
-            <button type="button" onclick="showResult()">Submit</button>
-            <div class="result" id="quizResult">💖 You're the only answer that matters Harshuu💖</div>
-        </form>
-    </section>
-    <script>
-        function showResult() {
-            document.getElementById("quizResult").style.display = "block";
-        }
-    </script>
+
+  <h1>💕 Just a Cute Lil Quiz for You 💕</h1>
+
+  <div class="question">
+    <h3>1. What’s the most kissable part of your face? 😚</h3>
+    <div class="options">
+      <button>Forehead</button>
+      <button>Cheeks</button>
+      <button>Nose</button>
+      <button>Lips (😗😗😗)</button>
+    </div>
+  </div>
+
+  <div class="question">
+    <h3>2. Our perfect night together would be? 🌙</h3>
+    <div class="options">
+      <button>Stargazing in pajamas</button>
+      <button>Late-night cuddles & music</button>
+      <button>Pillow fights + soft talks</button>
+      <button>A warm bath & deep convo</button>
+    </div>
+  </div>
+
+  <div class="question">
+    <h3>3. What nickname would you secretly love me to call you? 👀</h3>
+    <div class="options">
+      <button>Baby panda 🐼</button>
+      <button>Cutie commander 💘</button>
+      <button>Harshiiiii the Hurricane 🌪</button>
+      <button>My only chaos 💖</button>
+    </div>
+  </div>
+
+  <div class="question">
+    <h3>4. How would you reply if I whispered "I love you"? 💌</h3>
+    <div class="options">
+      <button>"Say it again, softly..." 🫣</button>
+      <button>"I’ve been waiting to hear that forever." 💗</button>
+      <button>"My whole soul just melted." 🐣</button>
+      <button>Bites your shoulder and runs 😛</button>
+    </div>
+  </div>
+
+  <button id="submit">Submit 💌</button>
+
+  <div class="result" id="resultText">
+    💖 Awwww... But guess what?  
+    <br><br>
+    This was just a prankkk 😜💗  
+    <br>
+    Your answers weren’t submitted anywhere —  
+    <br>  
+    but they’re locked in my heart forever.  
+    <br><br>
+    Sorry not sorry 🫣🐼💓
+  </div>
+
+  <script>
+    document.getElementById("submit").addEventListener("click", function () {
+      document.getElementById("resultText").style.display = "block";
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    });
+  </script>
+
 </body>
 </html>
