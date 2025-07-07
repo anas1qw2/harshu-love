@@ -2,142 +2,150 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Catch the Panda 🐼💘</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Her Love Gallery 💗</title>
   <style>
+    :root {
+      --main-bg: linear-gradient(145deg, #ffeef5, #f9e0ea);
+      --glow: rgba(255, 182, 193, 0.6);
+      --photo-shadow: rgba(255, 192, 203, 0.3);
+      --caption-color: #b84c7f;
+    }
+
     body {
       margin: 0;
-      background: linear-gradient(to right, #ffd6e8, #ffe6f2);
-      font-family: 'Segoe UI', sans-serif;
+      background: var(--main-bg);
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
       overflow: hidden;
+      height: 100vh;
     }
-    header {
-      text-align: center;
-      padding: 20px;
-      color: #c2185b;
-      font-size: 2em;
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 2rem;
     }
-    .panda {
+
+    .wheel {
+      position: relative;
+      width: 90vmin;
+      height: 90vmin;
+      border-radius: 50%;
+      animation: rotate 30s linear infinite;
+    }
+
+    .wheel:hover {
+      animation-play-state: paused;
+    }
+
+    .photo {
       position: absolute;
       width: 80px;
-      font-size: 60px;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
+      height: 80px;
+      border-radius: 16px;
+      overflow: hidden;
+      background-color: #fff;
+      box-shadow: 0 0 15px var(--photo-shadow);
+      transition: all 0.3s ease;
     }
-    #caught {
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .photo:hover {
+      transform: scale(1.1);
+      z-index: 2;
+      box-shadow: 0 0 25px var(--glow);
+    }
+
+    .photo:hover img {
+      transform: scale(1.2);
+      filter: brightness(1.15);
+    }
+
+    .caption {
+      position: absolute;
+      bottom: -22px;
+      width: 100%;
       text-align: center;
-      font-size: 1.4em;
-      color: #c2185b;
-      margin-top: 20px;
+      font-size: 10px;
+      color: var(--caption-color);
+      font-weight: 500;
+      opacity: 0.8;
     }
-    #mood {
-      text-align: center;
-      font-size: 1.2em;
-      margin-top: 10px;
-      color: #555;
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
-    .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #ffe6f0;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px #ff99cc;
-      z-index: 999;
-      text-align: center;
-      display: none;
-    }
-    .popup button {
-      margin: 10px;
-      padding: 10px 20px;
-      background-color: #ff69b4;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 1em;
-      cursor: pointer;
-    }
-    .popup button:hover {
-      background-color: #e75480;
+
+    /* 8 photo positions around the wheel */
+    .photo:nth-child(1) { top: 0%; left: 50%; transform: translate(-50%, -50%); }
+    .photo:nth-child(2) { top: 20%; left: 85%; transform: translate(-50%, -50%); }
+    .photo:nth-child(3) { top: 50%; left: 100%; transform: translate(-50%, -50%); }
+    .photo:nth-child(4) { top: 80%; left: 85%; transform: translate(-50%, -50%); }
+    .photo:nth-child(5) { top: 100%; left: 50%; transform: translate(-50%, -50%); }
+    .photo:nth-child(6) { top: 80%; left: 15%; transform: translate(-50%, -50%); }
+    .photo:nth-child(7) { top: 50%; left: 0%; transform: translate(-50%, -50%); }
+    .photo:nth-child(8) { top: 20%; left: 15%; transform: translate(-50%, -50%); }
+
+    @media (max-width: 600px) {
+      .photo {
+        width: 60px;
+        height: 60px;
+      }
+
+      .caption {
+        font-size: 9px;
+        bottom: -18px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>Catch the Panda if You Love Me! 🐼💕</header>
-  <main style="text-align:center">
-    <div class="panda" id="panda">🐼</div>
-    <p id="caught" style="display:none;">Yay! You caught the panda! You love meee 😚💖</p>
-    <p id="mood"></p>
-  </main>
-
-  <div class="popup" id="popup">
-    <p style="font-size:1.2em;">Wait... if you really love me… will you send me your cute photo? 🥺📸</p>
-    <button onclick="acceptPhoto()">Yes</button>
-    <button onclick="declinePhoto()">Maybe later</button>
+  <div class="container">
+    <div class="wheel">
+      <!-- Replace image URLs and captions below -->
+      <div class="photo">
+        <img src="https://i.imgur.com/UDBtvJw.jpeg" alt="Memory 1">
+        <div class="caption">Her smile 🌸</div>
+      </div>
+      <div class="photo">
+        <img src="https://i.imgur.com/R9LD1Tb.jpeg" alt="Memory 2">
+        <div class="caption">That sleepy voice 💤</div>
+      </div>
+      <div class="photo">
+        <img src="https://i.imgur.com/vgbAcIR.jpeg" alt="Memory 3">
+        <div class="caption">Her "baby eyes" 🥺</div>
+      </div>
+      <div class="photo">
+        <img src="https://i.imgur.com/8kbI6uK.jpeg" alt="Memory 4">
+        <div class="caption">The reel she sent 🎞️</div>
+      </div>
+      <div class="photo">
+        <img src="https://i.imgur.com/JZk4Y1L.jpeg" alt="Memory 5">
+        <div class="caption">That blush 🫣</div>
+      </div>
+      <div class="photo">
+        <img src="https://i.imgur.com/Eb8b3Pu.jpeg" alt="Memory 6">
+        <div class="caption">My safe place 💗</div>
+      </div>
+      <div class="photo">
+        <img src="https://i.imgur.com/zzLqM9n.jpeg" alt="Memory 7">
+        <div class="caption">Our vibe 🌙</div>
+      </div>
+      <div class="photo">
+        <img src="https://i.imgur.com/5RZjJwV.jpeg" alt="Memory 8">
+        <div class="caption">Forever us 💞</div>
+      </div>
+    </div>
   </div>
-
-  <script>
-    const panda = document.getElementById('panda');
-    const caught = document.getElementById('caught');
-    const mood = document.getElementById('mood');
-    const popup = document.getElementById('popup');
-
-    let missCount = 0;
-    let isCaught = false;
-    let isFrozen = false;
-
-    function movePanda() {
-      if (isCaught || isFrozen) return;
-      panda.style.top = Math.random() * 80 + 'vh';
-      panda.style.left = Math.random() * 80 + 'vw';
-    }
-
-    panda.onclick = () => {
-      if (isFrozen || isCaught) {
-        isCaught = true;
-        panda.textContent = '🥰';
-        caught.style.display = 'block';
-        mood.textContent = "You did it! I'm all yours 💘";
-        panda.style.cursor = 'default';
-      }
-    };
-
-    panda.onmouseover = () => {
-      if (isCaught || isFrozen) return;
-      missCount++;
-
-      if (missCount === 4) {
-        popup.style.display = 'block';
-        return;
-      }
-
-      if (missCount === 5) {
-        panda.textContent = '🥺';
-        mood.textContent = "Catch me, please 🥺";
-      } else if (missCount === 8) {
-        panda.textContent = '😔';
-        mood.textContent = "I'm losing hope... don’t you love me?";
-      } else {
-        mood.textContent = '';
-      }
-
-      movePanda();
-    };
-
-    function acceptPhoto() {
-      isFrozen = true;
-      popup.style.display = 'none';
-      mood.textContent = "I believe you now... come catch me 😚";
-    }
-
-    function declinePhoto() {
-      popup.style.display = 'none';
-      mood.textContent = "Okay... but I’m shy now 😔";
-    }
-
-    // Initial spawn
-    movePanda();
-  </script>
 </body>
 </html>
